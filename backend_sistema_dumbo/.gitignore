@@ -1,0 +1,27 @@
+# Carpeta node_modules generada por npm
+node_modules/
+
+# Archivos de registro
+npm-debug.log
+yarn-error.log
+
+# Archivos temporales
+*.log
+*.lock
+
+# Carpeta generada por IDE o editores de código
+.idea/
+.vscode/
+
+# Archivo .env con variables de entorno sensibles
+.env
+
+# Dependiendo de tu editor o IDE, puedes agregar más entradas para ignorar archivos generados por él.
+# Por ejemplo, si usas WebStorm, puedes añadir:
+# .idea/
+
+# Dependiendo de tu sistema operativo, puedes agregar entradas para ignorar archivos generados por él.
+# Por ejemplo, para macOS, puedes añadir:
+# .DS_Store
+
+# Para archivos o carpetas específicos que desees ignorar, puedes agregar entradas personalizadas.
