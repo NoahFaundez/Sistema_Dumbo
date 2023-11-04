@@ -16,6 +16,9 @@ yarn-error.log
 # Archivo .env con variables de entorno sensibles
 .env
 
+# Base de datos
+sistema_dumbo.sqlite
+
 # Dependiendo de tu editor o IDE, puedes agregar más entradas para ignorar archivos generados por él.
 # Por ejemplo, si usas WebStorm, puedes añadir:
 # .idea/
@@ -25,6 +28,3 @@ yarn-error.log
 # .DS_Store
 
 # Para archivos o carpetas específicos que desees ignorar, puedes agregar entradas personalizadas.
-
-# Bases de datos sqlite
-.db
