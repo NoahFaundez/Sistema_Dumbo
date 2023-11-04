@@ -25,3 +25,5 @@ yarn-error.log
 # .DS_Store
 
 # Para archivos o carpetas específicos que desees ignorar, puedes agregar entradas personalizadas.
+
+.db
