@@ -1,46 +1,62 @@
 const { request, response } = require('express');
+const bcryptjs = require('bcryptjs');
 
+const User = require('../models/user');
 
-const userGet = (req = request, res = response) => {
+const userGet = async(req = request, res = response) => {
 
-    const query = req.query;
+    const { limit } = req.query;
+    const users = await User.find()
+        .limit(Number(limit));
 
     res.json({
-        msg: 'GET API',
-        query
+        users
     });
 }
 
-const userPost = (req, res = response) => {
+const userPost = async(req, res = response) => {
 
-    const body = req.body;
+    const { name, lastName, rut, email, password, totalPoints, role } = req.body;
+    const user = new User({ name, lastName, rut, email, password, totalPoints, role });
+
+    // Encriptar la contraseña
+    const salt = bcryptjs.genSaltSync();
+    user.password = bcryptjs.hashSync( password, salt);
+
+    // Guardar en DB
+    await user.save();
 
     res.json({
-        msg: 'POST API',
-        body: body
+        user
     });
 }
 
-const userPut = (req, res = response) => {
+const userPut = async(req, res = response) => {
 
-    const id = req.params.id;
+    const { id } = req.params;
+    const { _id, password, email, ...data } = req.body;
 
+    // Validar contra base de datos
+    if (password) {
+        // Encriptar la contraseña
+        const salt = bcryptjs.genSaltSync();
+        data.password = bcryptjs.hashSync( password, salt);
+    }
+
+    const user = await User.findByIdAndUpdate( id, data);
+
+    res.json(user);
+}
+
+const userDelete = async(req, res = response) => {
+
+    const { id } = req.params;
+
+    // Fisicamente lo borramos
+    const user = await User.findByIdAndDelete(id);
 
     res.json({
-        msg: 'PUT API',
         id
-    });
-}
-
-const userPatch = (req, res = response) => {
-    res.json({
-        msg: 'PATCH API'
-    });
-}
-
-const userDelete = (req, res = response) => {
-    res.json({
-        msg: 'DELETE API'
     });
 }
 
@@ -49,7 +65,6 @@ module.exports = {
     userGet,
     userPost,
     userPut,
-    userPatch,
     userDelete
 };
 
