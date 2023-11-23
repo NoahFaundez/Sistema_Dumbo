@@ -1,8 +1,10 @@
 const { response, request } = require('express');
 const jwt = require('jsonwebtoken');
 
+const User = require('../models/user');
 
-const validateJWT = ( req = request, res = response, next ) => {
+
+const validateJWT = async( req = request, res = response, next ) => {
 
     const token = req.header('x-token');
 
@@ -16,8 +18,16 @@ const validateJWT = ( req = request, res = response, next ) => {
 
         const { uid } = jwt.verify( token, process.env.SECRETORPRIVATEKEY );
 
-        req.uid = uid;
+        // Leer el usuario que corresponde al uid
+        const user = await User.findById( uid );
 
+        if (!user) {
+            return res.status(401).json({
+                msg: 'Usuario eliminado'
+            });
+        }
+
+        req.user = user;
         next();
 
     } catch (error) {

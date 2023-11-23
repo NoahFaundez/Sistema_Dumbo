@@ -5,15 +5,18 @@ const { userGet, userPost, userPut, userPatch, userDelete } = require('../contro
 const { validateField } = require('../middlewares/validateFields');
 const { validRole, emailExists, rutExists, idExists } = require('../helpers/dbValidators');
 const { validateJWT } = require('../middlewares/validate-jwt');
+const { isAdmin } = require('../middlewares/validate-role');
 
 const router = Router();
 
 router.get('/', [
-    validateJWT
+    validateJWT,
+    isAdmin
 ], userGet);
 
 router.post('/', [
     validateJWT,
+    isAdmin,
     check('rut', 'El rut o dni no es válido').isLength({ min:12 }),
     check('rut').custom(rutExists),
     check('name', 'El nombre es obligatorio').not().isEmpty(),
@@ -27,6 +30,7 @@ router.post('/', [
 
 router.put('/:id', [
     validateJWT,
+    isAdmin,
     check('id', 'No es un ID valido').isMongoId(),
     check('id').custom(idExists),
     validateField
@@ -34,6 +38,7 @@ router.put('/:id', [
 
 router.delete('/:id', [
     validateJWT,
+    isAdmin,
     check('id', 'No es un ID valido').isMongoId(),
     check('id').custom(idExists),
     validateField
