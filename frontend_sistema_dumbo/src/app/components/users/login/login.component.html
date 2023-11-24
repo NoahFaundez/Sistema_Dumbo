@@ -1,0 +1,20 @@
+<div class="container">
+    <img class="dumboImage" src="../../../../assets/sistema_dumbo.png">
+    <form (submit)="postCredentials()">
+        <div class="mb-3">
+            <label for="nameInput" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nameInput" [(ngModel)]="formData.name" name="nameInput" placeholder="Ingrese su nombre" required #nameInput="ngModel">
+            <div *ngIf="nameInput.invalid && (nameInput.dirty || nameInput.touched)">
+              <div *ngIf="nameInput.errors?.['required']" class="text-danger">El nombre es obligatorio.</div>
+            </div>        
+        </div>
+        <div class="mb-3">
+            <label for="passwordInput" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="passwordInput" [(ngModel)]="formData.password" name="passwordInput" placeholder="Ingrese su contraseña" required #passwordInput="ngModel">
+            <div *ngIf="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)">
+                <div *ngIf="passwordInput.errors?.['required']" class="text-danger">La contraseña es obligatoria.</div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
+    </form>    
+</div>

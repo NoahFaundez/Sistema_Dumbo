@@ -1,0 +1,33 @@
+<header>
+    <h1>Dashboard</h1>
+    <button (click)="signOut()" class="btn btn-success">Cerrar Sesion</button>
+</header>
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Rut</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Total de puntos</th>
+            <th scope="col">Accion</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>{{ user.rut }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.lastName }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.totalPoints }}</td>
+                <td>
+                    <button class="btn btn-primary">Editar</button>
+
+                    <button class="btn btn-danger">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>    
+</div>
+
