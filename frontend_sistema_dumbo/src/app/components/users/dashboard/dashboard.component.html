@@ -1,6 +1,7 @@
 <header>
     <h1>Dashboard</h1>
     <button (click)="signOut()" class="btn btn-success">Cerrar Sesion</button>
+    <button (click)="createUser()" class="btn btn-success">Crear usuario</button>
 </header>
 <div class="container">
     <table class="table">
@@ -24,7 +25,7 @@
                 <td>
                     <button class="btn btn-primary">Editar</button>
 
-                    <button class="btn btn-danger">Eliminar</button>
+                    <button (click)="deleteUser(user.uid, user.name, user.lastName)" class="btn btn-danger">Eliminar</button>
                 </td>
             </tr>
         </tbody>

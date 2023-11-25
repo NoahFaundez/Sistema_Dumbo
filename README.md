@@ -1,24 +1,25 @@
 # Sistema Dumbo
 
-Introduction to Web/Mobile Development Workshop One
+This is a repository for an a application that show users of the database in a Express server with Angular client
 
-### Frontend
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.3.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli)
 
-### Backend
+This project was generated with [Express](https://expressjs.com/es/)
 
-This project was generated with [Express](https://expressjs.com/es/).
+# Programs that have to be installed
 
-## Commands
+To run the entire application install [NodeJS](https://nodejs.org/en) of preference LTS, then
 
-To initialize the frontend with Angular
-```
-npm install
-ng serve
-```
+## Client
 
-To initialize the backend with express
-```
-npm install
-nodemon app.js
-```
+Go to the frontend folder in the terminal
+
+Run `npm install -g @angular/cli` for install the AngularCLI
+
+Run `npm install` and `ng serve` to run the application
+
+## Server 
+
+Go to the backend folder in the terminal
+
+Run `npm install` and `nodemon app.js` to run the server side application

@@ -1,0 +1,59 @@
+<header>
+    <h1>Crear nuevo usuario</h1>
+</header>
+<div class="container">
+    <form (submit)="createUser()">
+        <div class="mb-3">
+            <label for="nameInput" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nameInput" [(ngModel)]="formData.name" name="nameInput" placeholder="Ingrese su nombre" required #nameInput="ngModel">
+            <div *ngIf="nameInput.invalid && (nameInput.dirty || nameInput.touched)">
+            <div *ngIf="nameInput.errors?.['required']" class="text-danger">El nombre es obligatorio.</div>
+            </div>        
+        </div>
+        <div class="mb-3">
+            <label for="lastNameInput" class="form-label">Apellido</label>
+            <input type="text" class="form-control" id="lastNameInput" [(ngModel)]="formData.lastName" name="lastNameInput" placeholder="Ingrese el apellido" required #lastNameInput="ngModel">
+            <div *ngIf="lastNameInput.invalid && (lastNameInput.dirty || lastNameInput.touched)">
+                <div *ngIf="lastNameInput.errors?.['required']" class="text-danger">El apellido es obligatorio.</div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="rutInput" class="form-label">Rut</label>
+            <input type="text" class="form-control" id="rutInput" [(ngModel)]="formData.rut" name="rutInput" placeholder="Ingrese el RUT" required #rutInput="ngModel">
+            <div *ngIf="rutInput.invalid && (rutInput.dirty || rutInput.touched)">
+                <div *ngIf="rutInput.errors?.['required']" class="text-danger">El rut es obligatorio.</div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="emailInput" class="form-label">Correo</label>
+            <input type="text" class="form-control" id="emailInput" [(ngModel)]="formData.email" name="emailInput" placeholder="Ingrese el correo" required #emailInput="ngModel">
+            <div *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)">
+                <div *ngIf="emailInput.errors?.['required']" class="text-danger">El correo es obligatorio.</div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="passwordInput" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="passwordInput" [(ngModel)]="formData.password" name="passwordInput" placeholder="Ingrese la contraseña" required #passwordInput="ngModel">
+            <div *ngIf="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)">
+                <div *ngIf="passwordInput.errors?.['required']" class="text-danger">La contraseña es obligatoria.</div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="totalPointsInput" class="form-label">Total de puntos</label>
+            <input type="number" class="form-control" id="totalPointsInput" [(ngModel)]="formData.totalPoints" name="totalPointsInput" placeholder="Ingrese el total de puntos" required #totalPointsInput="ngModel">
+            <div *ngIf="totalPointsInput.invalid && (totalPointsInput.dirty || totalPointsInput.touched)">
+                <div *ngIf="totalPointsInput.errors?.['required']" class="text-danger">El total de puntos es obligatorio.</div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="roleInput" class="form-label">Rol</label>
+            <input type="text" class="form-control" id="roleInput" [(ngModel)]="formData.role" name="roleInput" placeholder="Ingrese el rol" required #roleInput="ngModel">
+            <div *ngIf="roleInput.invalid && (roleInput.dirty || roleInput.touched)">
+                <div *ngIf="roleInput.errors?.['required']" class="text-danger">El rol es obligatorio.</div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Crear usuario</button>
+        <button type="button" (click)="goBack()" class="btn btn-primary">Volver</button>
+    </form>     
+</div>
+

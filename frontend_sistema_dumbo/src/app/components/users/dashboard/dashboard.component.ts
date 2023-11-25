@@ -29,6 +29,29 @@ export class DashboardComponent implements OnInit {
     );
   }
 
+  createUser() {
+    this.router.navigate(['/create']);
+  }
+
+  deleteUser(id: any, name: any, lastName: any) {
+    const confirmation = window.confirm('¿Esta seguro que desea eliminar a este usuario?');
+    if (confirmation) {
+      this.dataService.userDelete(id).subscribe(
+        (response) => {
+          location.reload();
+          console.log('Usuario eliminado correctamente.', response);
+          this.toastrService.success(`Se ha eliminado a ${ name } ${ lastName } correctamente`);
+        },
+        (error) => {
+          console.error('Error al eliminar el usuario:', error);
+        }
+      );  
+    } else {
+      return;
+    }
+    
+  }
+
   signOut() {
     localStorage.removeItem('user');
     this.router.navigate(['/login']);
