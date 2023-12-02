@@ -2,9 +2,7 @@
 
 This is a repository for an a application that show users of the database in a Express server with Angular client
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli)
-
-This project was generated with [Express](https://expressjs.com/es/)
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) and [Express](https://expressjs.com/es/)
 
 # Programs that have to be installed
 
@@ -22,4 +20,4 @@ Run `npm install` and `ng serve` to run the application
 
 Go to the backend folder in the terminal
 
-Run `npm install` and `nodemon app.js` to run the server side application
+Run `npm install` and `node app.js` to run the server side application
